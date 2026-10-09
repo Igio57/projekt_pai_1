@@ -5,22 +5,33 @@ export default function BookForm({ onSave }) {
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("Fantasy");
   const [status, setStatus] = useState("unread");
+  const [year, setYear] = useState("");
+  const [rating, setRating] = useState("5");
+  const [favorite, setFavorite] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     const newBook = {
       id: Date.now(),
-      title: title,
-      author: author,
-      genre: genre,
-      status: status,
+      title,
+      author,
+      genre,
+      status,
+      year: Number(year),
+      rating: Number(rating),
+      favorite,
     };
 
     onSave(newBook);
 
     setTitle("");
     setAuthor("");
+    setGenre("Fantasy");
+    setStatus("unread");
+    setYear("");
+    setRating("5");
+    setFavorite(false);
   }
 
   return (
@@ -46,26 +57,56 @@ export default function BookForm({ onSave }) {
         <option value="Kryminał">Kryminał</option>
         <option value="Sci-Fi">Sci-Fi</option>
         <option value="Romans">Romans</option>
+        <option value="Inne">Inne</option>
+      </select>
+
+      <div>
+        <label>
+          <input
+            type="radio"
+            value="read"
+            checked={status === "read"}
+            onChange={(event) => setStatus(event.target.value)}
+          />
+          Przeczytana
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            value="unread"
+            checked={status === "unread"}
+            onChange={(event) => setStatus(event.target.value)}
+          />
+          Nieprzeczytana
+        </label>
+      </div>
+
+      <input
+        type="number"
+        placeholder="Rok wydania"
+        value={year}
+        onChange={(event) => setYear(event.target.value)}
+      />
+
+      <select
+        value={rating}
+        onChange={(event) => setRating(event.target.value)}
+      >
+        <option value="1">1 ⭐</option>
+        <option value="2">2 ⭐</option>
+        <option value="3">3 ⭐</option>
+        <option value="4">4 ⭐</option>
+        <option value="5">5 ⭐</option>
       </select>
 
       <label>
         <input
-          type="radio"
-          value="read"
-          checked={status === "read"}
-          onChange={(event) => setStatus(event.target.value)}
+          type="checkbox"
+          checked={favorite}
+          onChange={(event) => setFavorite(event.target.checked)}
         />
-        Przeczytana
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="unread"
-          checked={status === "unread"}
-          onChange={(event) => setStatus(event.target.value)}
-        />
-        Nieprzeczytana
+        Ulubiona
       </label>
 
       <button type="submit">Dodaj</button>

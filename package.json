@@ -1,0 +1,28 @@
+{
+  "name": "projekt_pai_1",
+  "version": "1.0.0",
+  "description": "to jest z czata jak coś bo nie miałem pomysłu\r „BookShelf” — menedżer książek",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Igio57/projekt_pai_1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Igio57/projekt_pai_1/issues"
+  },
+  "homepage": "https://github.com/Igio57/projekt_pai_1#readme",
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.3"
+  }
+}
